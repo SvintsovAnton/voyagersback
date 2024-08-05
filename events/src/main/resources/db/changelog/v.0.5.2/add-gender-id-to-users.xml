@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add-column-gender-to-user" author="SvintsovAnton">
+        <addColumn tableName="users">
+            <column name="gender" type="bigint" defaultValue ="3">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add-foreign-key-gender-id" author="SvintsovAnton">
+        <addForeignKeyConstraint baseTableName="users"
+                                 baseColumnNames="gender"
+                                 constraintName="fk_users_gender_id"
+                                 referencedTableName="genders"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

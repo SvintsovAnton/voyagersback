@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Events
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event
+    username: postgres
+    password: Amigo1997!!!
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+  jpa:
+    properties:
+      hibernate:
+        auto_quote_keyword: true
+
+server:
+  port: 8080

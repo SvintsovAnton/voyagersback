@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  mail:
+    host: localhost
+    port: 3025
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+
+key:
+  access: JnqR7PGnOKXyikk3x974Utk15O9DH47rxLAbey1RNZU=
+  refresh: hEdhi2CrR5/hGKlhM+EszdR69/Q8l7xlqb8zlKE5WPU=

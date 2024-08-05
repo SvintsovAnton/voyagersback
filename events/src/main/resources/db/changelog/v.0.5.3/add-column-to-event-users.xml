@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add-column-to-event-users" author="SvintsovAnton">
+        <addColumn tableName="event_users">
+            <column name="roles_for_events_id" type="bigint" defaultValue="2"/>
+        </addColumn>
+        <addForeignKeyConstraint baseColumnNames="roles_for_events_id"
+                                 baseTableName="event_users"
+                                 constraintName="fk_event_users_roles_for_events"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles_for_events"/>
+    </changeSet>
+
+</databaseChangeLog>

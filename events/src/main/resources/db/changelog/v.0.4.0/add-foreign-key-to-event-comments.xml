@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add-foreign-keys-to-event-comments" author="SvintsovAnton">
+        <addForeignKeyConstraint baseTableName="event_comments"
+                                 baseColumnNames="event_id"
+                                 constraintName="fk_event_comments_event"
+                                 referencedTableName="events"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="event_comments"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_event_comments_user"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

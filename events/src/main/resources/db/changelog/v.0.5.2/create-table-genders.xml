@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-table-genders" author="SvintsovAnton">
+        <createTable tableName="genders">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(32)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert-genders" author="SvintsovAnton">
+        <insert tableName="genders">
+            <column name="gender" value="Male"/>
+        </insert>
+        <insert tableName="genders">
+            <column name="gender" value="Female"/>
+        </insert>
+        <insert tableName="genders">
+            <column name="gender" value="Non-binary"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

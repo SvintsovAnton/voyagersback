@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet id="create-default-admin" author="SvintsovAnton">
+        <insert tableName="users">
+            <column name="first_name" value="ADMIN"/>
+            <column name="last_name" value="ADMIN"/>
+            <column name="date_of_birth" value="2000-01-01"/>
+            <column name="email" value="defaultadmin@defaultadmin.de"/>
+            <column name="password" value="ADMIN12345!!!"/>
+            <column name="phone" value="+123456789"/>
+            <column name="photo" value="example.com"/>
+            <column name="gender" value="2"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="create-default-admin-2table" author="SvintsovAnton">
+        <insert tableName="user_roles">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE email='defaultadmin@defaultadmin.de')"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE email='defaultadmin@defaultadmin.de')"/>
+            <column name="role_id" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

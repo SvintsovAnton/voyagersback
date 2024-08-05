@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-table-roles-for-events" author="SvintsovAnton">
+        <createTable tableName="roles_for_events">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="insert-roles-for-event" author="SvintsovAnton">
+        <insert tableName="roles_for_events">
+            <column name="title" value="ROLE_OWNER"/>
+        </insert>
+        <insert tableName="roles_for_events">
+            <column name="title" value="ROLE_PARTICIPANT"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
+
