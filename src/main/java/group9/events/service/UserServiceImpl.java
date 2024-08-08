@@ -83,13 +83,13 @@ public class UserServiceImpl implements UserService {
         Role userRole = roleService.getRoleUser();
         user.setRoles(Set.of(userRole));
 //the value of true is automatically set to active for a while to avoid problems with tests when registering new users
-        user.setActive(true);
+        user.setActive(false);
         try {
             repository.save(user);
             Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             //Sending of messages upon registration has been temporarily disabled
-           //emailService.sendConfirmationEmail(user);
+           emailService.sendConfirmationEmail(user);
             UserDto userDto = userMappingService.mapEntityToDto(user);
             return userDto;
         } catch (DataIntegrityViolationException exception) {
