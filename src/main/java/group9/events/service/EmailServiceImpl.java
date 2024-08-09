@@ -77,7 +77,7 @@ public class EmailServiceImpl implements EmailService {
         try {
             Template template = mailConfig.getTemplate("confirm_reg_mail.ftlh");
             String code = confirmationService.generateConfirmationCode(user);
-            String url = "http://localhost:8080/api/register?code=" + code;
+            String url = "https://dolphin-app-tbsxh.ondigitalocean.app/api/register?code=" + code;
 
             Map<String, Object> templateMap = new HashMap<>();
             templateMap.put("name", user.getFirstName());
@@ -94,7 +94,7 @@ public class EmailServiceImpl implements EmailService {
             Template template = mailConfig.getTemplate("forgotten_password_mail.ftlh");
             User user = userRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("user don´t found"));
             String code = confirmationService.generateConfirmationCode(user);
-            String url = "http://localhost:8080/api/auth/reset-password?code=" + code;
+            String url = "https://dolphin-app-tbsxh.ondigitalocean.app/api/auth/reset-password?code=" + code;
 
             Map<String, Object> templateMap = new HashMap<>();
             templateMap.put("email", email);
