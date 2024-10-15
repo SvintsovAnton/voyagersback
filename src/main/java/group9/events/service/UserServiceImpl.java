@@ -144,6 +144,19 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public UserDto getCurrentUserDto() {
+        User user = getCurrentUser();
+        return userMappingService.mapEntityToDto(user);
+    }
+
+    @Override
+    public String getUserName() {
+        User user = getCurrentUser();
+        String userName = user.getFirstName();
+        return userName;
+    }
+
 
     @Override
     public List<UserDto> getAllUsers() {
