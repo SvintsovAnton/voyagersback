@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -51,4 +53,16 @@ public class UserController {
     @PostMapping("/addphoto/{url}")
     public UserDto addPhoto(@PathVariable String url)
     {return service.addPhoto(url);}
+
+    @GetMapping("/current")
+    public UserDto getUser(){
+        return service.getCurrentUserDto();
+    }
+
+    @GetMapping("/username")
+    public Map<String,String> getUserName(){
+        Map<String,String> response = new HashMap<>();
+        response.put("username", service.getUserName());
+        return response;
+    }
 }

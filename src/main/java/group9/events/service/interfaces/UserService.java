@@ -32,6 +32,11 @@ public interface UserService extends UserDetailsService {
 
     UserDto addPhoto(String urlPhoto);
 
+    UserDto getCurrentUserDto();
+
+
+    String getUserName();
+
 
 
 }
